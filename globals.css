@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap');
+
+:root {
+    --bg-color: #1e1e2e;
+    --main-color: #abe9b3;
+    --sub-color: #575268;
+    --sub-alt-color: #292739;
+    --text-color: #d9e0ee;
+    --error-color: #f28fad;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    font-family: 'Roboto Mono', monospace;
+}
+
+.container {
+    max-width: 1200px;
+    padding: 0 20px;
+    height: calc(100dvh - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--sub-color)
+}
+
+.text_container {
+    position: relative;
+}
+
+.nav_container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 500;
+    color: white;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+}
+
+.logo_icon {
+    color: var(--main-color);
+}
+
+.icons > a {
+    font-size: 24px;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.correct {
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--text-color);
+}
+
+.incorrect {
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--error-color)
+}
+
+.label {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.input_text {
+    position: absolute;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: transparent;
+}
+
+.time {
+    position: absolute;
+    top: -60px;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+.eval {
+    color: var(--main-color);
+    font-size: 30px;
+    display: flex;
+    align-items: end;
+    gap: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.reset {
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+    color: var(--sub-color);
+    text-align: center;
+    font-size: 30px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.settings {
+    position: absolute;
+    top: 150px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: var(--sub-alt-color);
+    border-radius: 10px;
+    gap: 20px;
+    color: var(--main-color);
+}
+
+.btn {
+    background: var(--sub-color);
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.selected {
+    background: var(--main-color);
+    color: var(--sub-alt-color);
+}
