@@ -1,10 +1,14 @@
-const useGetResults = ({testTime, input}:any) => {
+const useGetResults = ({testTime, input, errors}:any) => {
     const wordsTyped = input.length/5
     const timeInMinutes = testTime/60
 
-    const speed = wordsTyped/timeInMinutes
+    const accuracy = Math.round((input.length - errors)/input.length * 100)
 
-    return Math.round(speed)
+    const speed = Math.round(wordsTyped/timeInMinutes)
+
+    return {
+        speed, accuracy
+    }
 }
 
 export default useGetResults

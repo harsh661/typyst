@@ -8,6 +8,7 @@ function App() {
   const [start, setStart] = useState(false)
   const [show, setShow] = useState(false)
   const [input, setInput] = useState<string>("")
+  const [errors, setErrors] = useState<number>(0)
   const [testTime, setTestTime] = useState<number>(30)
   const [timer, setTimer] = useState<number>(testTime)
 
@@ -18,6 +19,16 @@ function App() {
   useEffect(() => {
     setTimer(testTime)
   }, [testTime])
+
+  useEffect(() => {
+    if(start) {
+      input.split('').map((item, i) => {
+        if(item !== undefined && item !== text[i]) {
+          setErrors(prev => prev + 1)
+        }
+      })
+    }
+  }, [input])
 
   const getQuotes = () => {
     setInput("")
@@ -81,7 +92,7 @@ function App() {
         spellCheck={false}
       />
 
-      <Result show={show} input={input} time={testTime} />
+      <Result show={show} input={input} time={testTime} errors={errors}/>
     </div>
   )
 }
