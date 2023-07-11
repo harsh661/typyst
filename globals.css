@@ -178,6 +178,53 @@ body {
     background: var(--sub-color);
 }
 
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 250px;
+}
+
+.form_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.signup::before {
+    content: "register";
+    color: var(--text-color);
+}
+.signin::before {
+    content: "login";
+    color: var(--text-color);
+}
+
+.form > input {
+    outline: none;
+    border: none;
+    background: var(--sub-alt-color);
+    padding: 10px;
+    font-size: 16px;
+    color: var(--text-color);
+    border-radius: 8px;
+}
+
+.form > button {
+    font-size: 16px;
+    background: var(--sub-alt-color);
+    color: var(--text-color);
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
 @media screen and (max-width: 640px) {
     .logo {
         font-size: 24px;
@@ -193,5 +240,10 @@ body {
     }
     .text, .correct, .incorrect {
         font-size: 20px;
+    }
+    .form_wrapper {
+        flex-direction: column;
+        gap: 50px;
+        align-items: center;
     }
 }

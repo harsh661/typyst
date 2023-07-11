@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Login from './pages/Login.tsx';
 
 const Layout = () => {
   return (
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <h2>Login</h2>
+        element: <Login />
       },
     ]
   }
