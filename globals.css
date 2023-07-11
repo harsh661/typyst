@@ -148,7 +148,7 @@ body {
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
-    padding: 10px;
+    padding: 8px;
     margin: 0 20px;
     background: var(--sub-alt-color);
     border-radius: 10px;
