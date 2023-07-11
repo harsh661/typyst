@@ -33,6 +33,7 @@ function App() {
   const getQuotes = () => {
     setInput("")
     setText("")
+    setShow(false)
     fetch("https://api.quotable.io/random?minLength=200&maxLength=220")
       .then((res) => res.json())
       .then((data) => {
@@ -82,6 +83,8 @@ function App() {
         ))}
         <label htmlFor="input" className="label" />
       </div>
+
+      <span className="reset" onClick={getQuotes}>&#8634;</span>
 
       <input
         onChange={handleInput}
