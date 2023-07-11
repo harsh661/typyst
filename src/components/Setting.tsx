@@ -14,7 +14,7 @@ const Setting: React.FC<SettingProps> = ({ time, setTime }) => {
 
   return (
     <div className="settings">
-      <i className="fa fa-clock-o" style={{ fontSize: "24px" }}></i>
+      <i className="fa fa-clock-o"></i>
 
       {times.map((value) => (
         <label htmlFor={value.toString()} className={`btn ${time == value && "selected"}`}>

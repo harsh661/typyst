@@ -133,6 +133,7 @@ body {
     padding: 10px;
     background: var(--sub-alt-color);
     border-radius: 10px;
+    font-size: 24px;
     gap: 20px;
     color: var(--main-color);
 }
@@ -150,4 +151,22 @@ body {
 .selected {
     background: var(--main-color);
     color: var(--sub-alt-color);
+}
+
+@media screen and (max-width: 640px) {
+    .logo {
+        font-size: 24px;
+    }
+    .settings {
+        font-size: 16px;
+        padding: 5px;
+        top: 80px;
+    }
+    .btn {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+    .text, .correct, .incorrect {
+        font-size: 20px;
+    }
 }
