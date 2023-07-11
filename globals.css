@@ -212,6 +212,7 @@ body {
 }
 
 .form > button {
+    cursor: pointer;
     font-size: 16px;
     background: var(--sub-alt-color);
     color: var(--text-color);
