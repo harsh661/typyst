@@ -6,8 +6,10 @@ const useGetResults = ({testTime, input, errors}:any) => {
 
     const speed = Math.round(wordsTyped/timeInMinutes)
 
+    const cpm = Math.round(input.length/timeInMinutes)
+
     return {
-        speed, accuracy
+        speed, accuracy, cpm
     }
 }
 

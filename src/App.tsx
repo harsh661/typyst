@@ -62,7 +62,7 @@ function App() {
 
   return (
     <div className="container">
-      <Setting time={timer} setTime={setTestTime} />
+      {!show && <Setting time={timer} setTime={setTestTime} />}
 
       <div className={`text_container`}>
         {start && <Timer onFinish={onFinish} time={timer} onStart={count} />}
@@ -84,7 +84,7 @@ function App() {
         <label htmlFor="input" className="label" />
       </div>
 
-      <span className={`${show ? 'hidden': 'reset'}`} onClick={getQuotes}>
+      <span className={`${show || !text ? 'hidden': 'reset'}`} onClick={getQuotes}>
         &#8634;
       </span>
 

@@ -12,7 +12,7 @@ const Result: React.FC<ResultProps> = ({
     input, time, show, errors
 }) => {
 
-  const {speed, accuracy} = useGetResults({testTime: time, input, errors:errors})
+  const {speed, accuracy, cpm} = useGetResults({testTime: time, input, errors:errors})
 
   if(!show) return
 
@@ -20,9 +20,11 @@ const Result: React.FC<ResultProps> = ({
     <div className="results">
         <div className="text">Speed</div>
         <div className="eval">{speed}<span>wpm</span></div>
-        <hr />
+        <div className="small_text">{cpm} <span>cpm</span></div>
+        <hr style={{"width": '100%'}}/>
         <div className="text">Acc</div>
         <div className="eval">{accuracy}<span>%</span></div>
+        <div className="small_text">{errors} <span>{errors > 1 ? 'errors': 'error'}</span></div>
 
         <a href="/" className="reset">&#8634;</a>
     </div>
