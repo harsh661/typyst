@@ -13,6 +13,7 @@ function App() {
   const [timer, setTimer] = useState<number>(testTime)
 
   useEffect(() => {
+    setErrors(0)
     getQuotes()
   }, [])
 
@@ -21,12 +22,11 @@ function App() {
   }, [testTime])
 
   useEffect(() => {
-    if(start) {
-      input.split('').map((item, i) => {
-        if(item !== undefined && item !== text[i]) {
-          setErrors(prev => prev + 1)
-        }
-      })
+    if (start) {
+      const wrongTexts = document.querySelectorAll(".incorrect")
+      if (wrongTexts.length > errors) {
+        setErrors(wrongTexts.length)
+      }
     }
   }, [input])
 
@@ -70,7 +70,7 @@ function App() {
         {text?.split("").map((letter, index) => (
           <span
             key={index}
-            className={`${
+            className={`items ${
               input[index] === letter
                 ? "correct"
                 : input[index] === undefined
@@ -84,7 +84,9 @@ function App() {
         <label htmlFor="input" className="label" />
       </div>
 
-      <span className="reset" onClick={getQuotes}>&#8634;</span>
+      <span className={`${show ? 'hidden': 'reset'}`} onClick={getQuotes}>
+        &#8634;
+      </span>
 
       <input
         onChange={handleInput}
@@ -93,9 +95,10 @@ function App() {
         autoFocus
         className="input_text"
         spellCheck={false}
+        disabled={timer == 0}
       />
 
-      <Result show={show} input={input} time={testTime} errors={errors}/>
+      <Result show={show} input={input} time={testTime} errors={errors} />
     </div>
   )
 }
