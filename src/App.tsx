@@ -11,11 +11,11 @@ function App() {
   const [errors, setErrors] = useState<number>(0)
   const [testTime, setTestTime] = useState<number>(30)
   const [timer, setTimer] = useState<number>(testTime)
+  const [uppercase, setUppercase] = useState<boolean>(false)
 
   useEffect(() => {
-    setErrors(0)
     getQuotes()
-  }, [])
+  }, [uppercase])
 
   useEffect(() => {
     setTimer(testTime)
@@ -37,7 +37,11 @@ function App() {
     fetch("https://api.quotable.io/random?minLength=200&maxLength=220")
       .then((res) => res.json())
       .then((data) => {
-        setText(data.content)
+        if(uppercase) {
+          setText(data.content)
+        } else {
+          setText(data.content.toLowerCase())
+        }
       })
   }
 
@@ -62,7 +66,13 @@ function App() {
 
   return (
     <div className="container">
-      {!show && <Setting time={timer} setTime={setTestTime} />}
+      {!show && 
+      <Setting
+        time={timer}
+        setTime={setTestTime}
+        uppercase={uppercase}
+        setUppercase={setUppercase}
+      />}
 
       <div className={`text_container`}>
         {start && <Timer onFinish={onFinish} time={timer} onStart={count} />}
