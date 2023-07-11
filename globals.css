@@ -34,6 +34,11 @@ body {
     color: var(--sub-color)
 }
 
+.small_text {
+    font-size: 16px;
+    color: var(--sub-color);
+}
+
 .text_container {
     position: relative;
 }
@@ -102,9 +107,15 @@ body {
     white-space: nowrap;
 }
 
+.results {
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+}
+
 .eval {
     color: var(--main-color);
-    font-size: 30px;
+    font-size: 40px;
     display: flex;
     align-items: end;
     gap: 5px;
