@@ -1,4 +1,5 @@
 import React from "react"
+import {BiTimeFive} from 'react-icons/bi'
 
 interface SettingProps {
   time: number
@@ -14,7 +15,7 @@ const Setting: React.FC<SettingProps> = ({ time, setTime }) => {
 
   return (
     <div className="settings">
-      <i className="fa fa-clock-o"></i>
+      <BiTimeFive />
 
       {times.map((value) => (
         <label htmlFor={value.toString()} className={`btn ${time == value && "selected"}`}>

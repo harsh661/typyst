@@ -65,8 +65,13 @@ body {
     color: var(--main-color);
 }
 
+.icons {
+    display: flex;
+    gap: 14px;
+}
+
 .icons > a {
-    font-size: 24px;
+    font-size: 20px;
     color: var(--text-color);
     text-decoration: none;
 }
