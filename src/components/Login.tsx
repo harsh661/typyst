@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react"
-import { CgLogIn, CgGoogle } from "react-icons/cg"
+import { CgGoogle } from "react-icons/cg"
+import { MdOutlineLogin } from "react-icons/md"
 import { auth } from "../../backend/firebase"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
@@ -38,7 +39,7 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button>
-        <CgLogIn />
+        <MdOutlineLogin />
         Login
       </button>
       <div>

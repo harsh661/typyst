@@ -68,13 +68,21 @@ body {
 
 .icons {
     display: flex;
-    gap: 14px;
+    gap: 20px;
 }
 
 .icons > a {
-    font-size: 20px;
-    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--sub-color);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.icons > a:hover {
+    color: var(--text-color);
 }
 
 .correct {
@@ -224,6 +232,11 @@ body {
     align-items: center;
     justify-content: center;
     gap: 5px;
+}
+
+.form > button:hover, .form > div:hover {
+    background: var(--text-color);
+    color: var(--sub-alt-color);
 }
 
 @media screen and (max-width: 640px) {
