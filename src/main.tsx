@@ -1,12 +1,12 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import Navbar from './components/Navbar.tsx'
-import { Outlet } from 'react-router'
+import { Outlet } from "react-router-dom"
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Login from './pages/Login.tsx';
+import Form from './pages/Form.tsx';
 
 const Layout = () => {
   return (
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />
+        element: <Form />
       },
     ]
   }
