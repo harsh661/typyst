@@ -21,14 +21,14 @@ function App() {
     setTimer(testTime)
   }, [testTime])
 
-  useEffect(() => {
-    if (start) {
+  const handleKeyPress = () => {
+    if(start) {
       const wrongTexts = document.querySelectorAll(".incorrect")
-      if (wrongTexts.length > errors) {
-        setErrors(wrongTexts.length)
+      if (wrongTexts.length) {
+        setErrors(prev => prev + 1)
       }
     }
-  }, [input])
+  }
 
   const getQuotes = () => {
     setInput("")
@@ -99,6 +99,7 @@ function App() {
       </span>
 
       <input
+        onKeyUp={handleKeyPress}
         onChange={handleInput}
         value={input}
         id="input"
