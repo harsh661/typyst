@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import Navbar from './components/Navbar.tsx'
+import { UserContextProvider } from './context/UserContext.tsx'
 import { Outlet } from "react-router-dom"
 import {
   createBrowserRouter,
@@ -10,10 +11,10 @@ import Form from './pages/Form.tsx';
 
 const Layout = () => {
   return (
-    <>
+    <UserContextProvider>
       <Navbar />
       <Outlet />
-    </>
+    </UserContextProvider>
   )
 }
 
