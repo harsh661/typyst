@@ -21,14 +21,14 @@ function App() {
     setTimer(testTime)
   }, [testTime])
 
-  const handleKeyPress = () => {
+  useEffect(() => {
+    let index = input.length - 1
     if(start) {
-      const wrongTexts = document.querySelectorAll(".incorrect")
-      if (wrongTexts.length) {
+      if(input[index] !== text[index]) {
         setErrors(prev => prev + 1)
       }
     }
-  }
+  }, [input])
 
   const getQuotes = () => {
     setInput("")
@@ -37,7 +37,7 @@ function App() {
     fetch("https://api.quotable.io/random?minLength=200&maxLength=220")
       .then((res) => res.json())
       .then((data) => {
-        if(uppercase) {
+        if (uppercase) {
           setText(data.content)
         } else {
           setText(data.content.toLowerCase())
@@ -50,6 +50,7 @@ function App() {
     if (e.target.value === text[0]) {
       setStart(true)
     }
+
     if (e.target.value === text) {
       getQuotes()
     }
@@ -66,13 +67,14 @@ function App() {
 
   return (
     <div className="container">
-      {!show && 
-      <Setting
-        time={timer}
-        setTime={setTestTime}
-        uppercase={uppercase}
-        setUppercase={setUppercase}
-      />}
+      {!show && (
+        <Setting
+          time={timer}
+          setTime={setTestTime}
+          uppercase={uppercase}
+          setUppercase={setUppercase}
+        />
+      )}
 
       <div className={`text_container`}>
         {start && <Timer onFinish={onFinish} time={timer} onStart={count} />}
@@ -94,12 +96,14 @@ function App() {
         <label htmlFor="input" className="label" />
       </div>
 
-      <span className={`${show || !text ? 'hidden': 'reset'}`} onClick={getQuotes}>
+      <span
+        className={`${show || !text ? "hidden" : "reset"}`}
+        onClick={getQuotes}
+      >
         &#8634;
       </span>
 
       <input
-        onKeyUp={handleKeyPress}
         onChange={handleInput}
         value={input}
         id="input"
