@@ -1,11 +1,8 @@
 import { collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "../backend/firebase"
 
-interface getTestProps {
-  id: string
-}
 
-const getTestsById = async (id: getTestProps) => {
+const getTestsById = async (id: string) => {
     let tests:any = []
   const q = query(collection(db, "tests"), where("userId", "==", id))
 

@@ -2,11 +2,8 @@ import { doc, getDoc } from "firebase/firestore"
 import { db } from "../backend/firebase"
 import getTestsById from "./useGetTests"
 
-interface getUserProps {
-  id: string
-}
 
-const getUserById = async (id: getUserProps) => {
+const getUserById = async (id: string) => {
   const docRef = doc(db, "Users", id.toString())
   const docSnap = await getDoc(docRef)
 
