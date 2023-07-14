@@ -12,10 +12,11 @@ const Timer: React.FC<TimerProps> = ({ onFinish, onStart, time }) => {
     onStart()
   }, [])
 
-  if(time < 0 ) {
-    onFinish()
-    return
-  }
+  useEffect(() => {
+    if(time === 0) {
+      onFinish()
+    }
+  }, [time, onFinish])
 
   return (
     <div className="time eval">
