@@ -21,15 +21,6 @@ function App() {
     setTimer(testTime)
   }, [testTime])
 
-  useEffect(() => {
-    let index = input.length - 1
-    if(start) {
-      if(input[index] !== text[index]) {
-        setErrors(prev => prev + 1)
-      }
-    }
-  }, [input])
-
   const getQuotes = () => {
     setInput("")
     setText("")
@@ -46,74 +37,81 @@ function App() {
   }
 
   const handleInput = (e: any) => {
+    let index = input.length - 1
+
     setInput(e.target.value)
     if (e.target.value === text[0]) {
       setStart(true)
-    }
-
-    if (e.target.value === text) {
+    } else if (e.target.value === text) {
       getQuotes()
     }
-  }
 
-  const onFinish = () => {
-    setText("")
-    setShow(true)
+    if (start && input[index] !== text[index]) {
+      setErrors((prev) => prev + 1)
+    }
   }
 
   const count = () => {
     setInterval(() => setTimer((prev) => prev - 1), 1000)
   }
 
+  const onFinish = () => {
+    setShow(true)
+  }
+
   return (
     <div className="container">
-      {!show && (
-        <Setting
-          time={timer}
-          setTime={setTestTime}
-          uppercase={uppercase}
-          setUppercase={setUppercase}
-        />
-      )}
+      {show ? (
+        <Result input={input} time={testTime} errors={errors} />
+      ) : (
+        <>
+          <Setting
+            time={timer}
+            setTime={setTestTime}
+            uppercase={uppercase}
+            setUppercase={setUppercase}
+          />
 
-      <div className={`text_container`}>
-        {start && <Timer onFinish={onFinish} time={timer} onStart={count} />}
+          <div className={`text_container`}>
+            {start && (
+              <Timer onFinish={onFinish} time={timer} onStart={count}/>
+            )}
 
-        {text?.split("").map((letter, index) => (
+            {text?.split("").map((letter, index) => (
+              <span
+                key={index}
+                className={`items ${
+                  input[index] === letter
+                    ? "correct"
+                    : input[index] === undefined
+                    ? "text"
+                    : "incorrect"
+                }`}
+              >
+                {letter}
+              </span>
+            ))}
+            <label htmlFor="input" className="label" />
+          </div>
+
           <span
-            key={index}
-            className={`items ${
-              input[index] === letter
-                ? "correct"
-                : input[index] === undefined
-                ? "text"
-                : "incorrect"
-            }`}
+            className={`${show || !text ? "hidden" : "reset"}`}
+            onClick={getQuotes}
           >
-            {letter}
+            &#8634;
           </span>
-        ))}
-        <label htmlFor="input" className="label" />
-      </div>
 
-      <span
-        className={`${show || !text ? "hidden" : "reset"}`}
-        onClick={getQuotes}
-      >
-        &#8634;
-      </span>
-
-      <input
-        onChange={handleInput}
-        value={input}
-        id="input"
-        autoFocus
-        className="input_text"
-        spellCheck={false}
-        disabled={timer == 0}
-      />
-
-      <Result show={show} input={input} time={testTime} errors={errors} />
+          <input
+            onChange={handleInput}
+            value={input}
+            id="input"
+            autoFocus
+            className="input_text"
+            spellCheck={false}
+            disabled={timer == 0}
+          />
+        </>
+      )}
     </div>
   )
 }
