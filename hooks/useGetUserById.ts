@@ -1,5 +1,6 @@
 import { doc, getDoc } from "firebase/firestore"
 import { db } from "../backend/firebase"
+import getTestsById from "./useGetTests"
 
 interface getUserProps {
   id: string
@@ -10,8 +11,10 @@ const getUserById = async (id: getUserProps) => {
   const docSnap = await getDoc(docRef)
 
   if (docSnap.exists()) {
+    const data = docSnap.data()
+    const tests = await getTestsById(id)
     
-    const data =  docSnap.data()
+    data.tests = tests
 
     return data
   } else {

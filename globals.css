@@ -253,7 +253,7 @@ body {
     border-radius: 10px;
 }
 
-.profile {
+.profile, .tests {
     background: var(--sub-alt-color);
     padding: 20px;
     font-size: 32px;
@@ -263,6 +263,11 @@ body {
     gap: 20px;
     border-radius: 10px;
     overflow: hidden;
+}
+
+.tests {
+    background-color: var(--bg-color);
+    margin-top: 20px;
 }
 
 .about {

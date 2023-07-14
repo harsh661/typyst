@@ -2,24 +2,41 @@ import { useParams } from "react-router-dom"
 import getUserById from "../../hooks/useGetUserById"
 import { useEffect, useState } from "react"
 import Avatar from "../components/Avatar"
+import Tests from "../components/Tests"
 
 interface UserType {
-  displayName?: string
-  email?: string
-  photoUrl?: string
-  tests?: []
+  id: string
+  displayName: string
+  email: string
+  photoUrl: string
+  tests: []
 }
 
 const Profile = () => {
   const params = useParams()
-  const [user, setUser] = useState<UserType>({})
+  const [speed, setSpeed] = useState(0)
+  const [accuracy, setAccuracy] = useState(0)
+  const [user, setUser] = useState<UserType>({
+    id: "",
+    displayName: "",
+    email: "",
+    photoUrl: "",
+    tests: [],
+  })
 
   useEffect(() => {
     getUser()
   }, [params])
 
+  useEffect(() => {
+    user.tests.forEach((test:any) => {
+      setSpeed(prev => prev + test.speed)
+      setAccuracy(prev => prev + test.accuracy)
+    })
+  }, [user])
+
   const getUser = async () => {
-    const data = (await getUserById(params.id)) as Object
+    const data = (await getUserById(params.id)) as UserType
     setUser(data)
   }
 
@@ -38,19 +55,20 @@ const Profile = () => {
         <hr />
         <div className="stats">
           <div className="heading">
-            <h2>{3}</h2>
+            <h2>{user.tests.length}</h2>
             <span className="small_text">tests taken</span>
           </div>
           <div className="heading">
-            <h2>{45}</h2>
+            <h2>{speed/user.tests.length}</h2>
             <span className="small_text">avg wpm</span>
           </div>
           <div className="heading">
-            <h2>{98}%</h2>
+            <h2>{accuracy/user.tests.length}%</h2>
             <span className="small_text">avg accuracy</span>
           </div>
         </div>
       </div>
+      <Tests tests={user.tests}/>
     </div>
   )
 }

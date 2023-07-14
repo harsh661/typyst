@@ -21,7 +21,8 @@ const Register = () => {
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then( async () => {
-                  await setDoc(doc(db, "Users", userCredentials.user.uid), {
+                  await setDoc(doc(db, "Users", user.uid), {
+                    id: user.uid,
                     email: user.email,
                     displayName: user.displayName,
                     photoUrl: user.photoURL
