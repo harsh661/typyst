@@ -8,6 +8,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Form from './pages/Form.tsx';
+import Profile from './pages/Profile.tsx'
 
 const Layout = () => {
   return (
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <App />
+      },
+      {
+        path: "/profile/:id",
+        element: <Profile />
       },
       {
         path: "/login",

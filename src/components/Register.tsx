@@ -1,8 +1,9 @@
-import { auth } from "../../backend/firebase"
+import { auth, db } from "../../backend/firebase"
 import { FormEvent, useState } from "react"
 import { CgUserAdd } from "react-icons/cg"
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { useNavigate } from "react-router-dom"
+import { doc, setDoc } from "firebase/firestore"
 
 const Register = () => {
   const navigate = useNavigate()
@@ -15,11 +16,18 @@ const Register = () => {
 
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredentials) => {
-            const user = userCredentials.user
+              const user = userCredentials.user
             if(auth.currentUser) {
                 updateProfile(auth.currentUser, {
                     displayName: name
-                }).catch(err => {
+                }).then( async () => {
+                  await setDoc(doc(db, "Users", userCredentials.user.uid), {
+                    email: user.email,
+                    displayName: user.displayName,
+                    photoUrl: user.photoURL
+                  })
+                })
+                .catch(err => {
                     console.log(err)
                 })
             }

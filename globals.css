@@ -239,6 +239,74 @@ body {
     color: var(--sub-alt-color);
 }
 
+
+.profile_container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.profile {
+    background: var(--sub-alt-color);
+    padding: 20px;
+    font-size: 32px;
+    color: var(--sub-color);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+}
+
+.heading > h2 {
+    margin: 0;
+    font-weight: 400;
+    font-size: 32px;
+    color: var(--text-color);
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.stats .heading {
+    align-items: center;
+}
+
+.stats h2 {
+    font-size: 40px;
+}
+
+hr {
+    border: 2px solid var(--sub-color);
+    border-radius: 50px;
+    height: 80px;
+    display: flex;
+}
+
 @media screen and (max-width: 640px) {
     .logo {
         font-size: 24px;
@@ -259,5 +327,18 @@ body {
         flex-direction: column;
         gap: 50px;
         align-items: center;
+    }
+    .profile {
+        flex-direction: column;
+    }
+    .stats {
+        flex-direction: column;
+    }
+    .stats h2 {
+        font-size: 32px;
+    }
+    hr {
+        width: 80px;
+        height: auto;
     }
 }
