@@ -23,6 +23,7 @@ const Profile = () => {
   }, [user])
 
   const getUser = async () => {
+    if(!params.id) return
     const data = await getUserById(params.id)
     setUser(data)
   }
