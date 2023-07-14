@@ -50,11 +50,11 @@ const Profile = () => {
             <span className="small_text">tests taken</span>
           </div>
           <div className="heading">
-            <h2>{speed !== 0 ? speed/testLength : 0}</h2>
+            <h2>{speed !== 0 ? Math.round(speed/testLength) : 0}</h2>
             <span className="small_text">avg wpm</span>
           </div>
           <div className="heading">
-            <h2>{accuracy !== 0 ? accuracy/testLength : 100}%</h2>
+            <h2>{accuracy !== 0 ? Math.round(accuracy/testLength) : 100}%</h2>
             <span className="small_text">avg accuracy</span>
           </div>
         </div>
