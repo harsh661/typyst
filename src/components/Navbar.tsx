@@ -12,17 +12,21 @@ const Navbar = () => {
   const { user, setUser } = useContext(UserContext)
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      if(authUser) {
         const currentUser = {
-          uid: user.uid,
-          displayName: user.displayName,
-          email: user.email,
+          uid: authUser.uid,
+          displayName: authUser.displayName,
+          email: authUser.email,
         }
         setUser(currentUser)
+      } else {
+        setUser(null)
       }
     })
-  }, [user])
+
+    return () => unsubscribe()
+  }, [setUser])
 
   const logOut = () => {
     signOut(auth)

@@ -27,7 +27,10 @@ const Profile = () => {
     setUser(data)
   }
 
+  
   if (!user) return
+  
+  const testLength = user.tests.length
 
   return (
     <div className="profile_container">
@@ -42,15 +45,15 @@ const Profile = () => {
         <hr />
         <div className="stats">
           <div className="heading">
-            <h2>{user.tests.length}</h2>
+            <h2>{testLength}</h2>
             <span className="small_text">tests taken</span>
           </div>
           <div className="heading">
-            <h2>{speed/user.tests.length}</h2>
+            <h2>{speed !== 0 ? speed/testLength : 0}</h2>
             <span className="small_text">avg wpm</span>
           </div>
           <div className="heading">
-            <h2>{accuracy/user.tests.length}%</h2>
+            <h2>{accuracy !== 0 ? accuracy/testLength : 100}%</h2>
             <span className="small_text">avg accuracy</span>
           </div>
         </div>
