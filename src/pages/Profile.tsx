@@ -3,40 +3,27 @@ import getUserById from "../../hooks/useGetUserById"
 import { useEffect, useState } from "react"
 import Avatar from "../components/Avatar"
 import Tests from "../components/Tests"
-
-interface UserType {
-  id: string
-  displayName: string
-  email: string
-  photoUrl: string
-  tests: []
-}
+import { DocumentData } from "firebase/firestore"
 
 const Profile = () => {
   const params = useParams()
   const [speed, setSpeed] = useState(0)
   const [accuracy, setAccuracy] = useState(0)
-  const [user, setUser] = useState<UserType>({
-    id: "",
-    displayName: "",
-    email: "",
-    photoUrl: "",
-    tests: [],
-  })
+  const [user, setUser] = useState<DocumentData | undefined>()
 
   useEffect(() => {
     getUser()
   }, [params])
 
   useEffect(() => {
-    user.tests.forEach((test:any) => {
+    user?.tests.forEach((test:any) => {
       setSpeed(prev => prev + test.speed)
       setAccuracy(prev => prev + test.accuracy)
     })
   }, [user])
 
   const getUser = async () => {
-    const data = (await getUserById(params.id)) as UserType
+    const data = (await getUserById(params.id))
     setUser(data)
   }
 

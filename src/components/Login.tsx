@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault()
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredentials) => {
+      .then(() => {
         navigate('/')
       })
       .catch((err) => {
