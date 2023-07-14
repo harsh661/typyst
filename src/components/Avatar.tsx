@@ -7,7 +7,7 @@ interface AvatarProps {
 
 const Avatar: React.FC<AvatarProps> = ({ src, name }) => {
   return (
-    <img src={src ? src : ""} alt={name} className="avatar"/>
+    <img src={src ? src : "https://i.ibb.co/M1fgZL9/images.jpg"} alt={name} className="avatar"/>
   )
 }
 
